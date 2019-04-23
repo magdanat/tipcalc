@@ -63,7 +63,6 @@ class MainActivity : AppCompatActivity() {
                 editText.addTextChangedListener(this)
                 money = new
             }
-
         })
 
         button.setOnClickListener {
