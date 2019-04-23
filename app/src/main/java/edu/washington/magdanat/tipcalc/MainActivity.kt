@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "The input has changed!")
 
                 // Enables button
-                button.isEnabled = true;
+                button.isEnabled = true
 
                 // Remove listener to avoid crashing application
                 editText.removeTextChangedListener(this)
