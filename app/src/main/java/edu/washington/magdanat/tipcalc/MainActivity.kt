@@ -11,7 +11,6 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     val TAG = "MainActivity"
-    var money : String = "0.00"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,9 +18,12 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.buttonTip)
         val editText: EditText = findViewById(R.id.editText)
+
         // Reformats inputted text to a double that is reformatted into US currency
         val moneyFormat = NumberFormat.getCurrencyInstance(Locale.US)
         val nonNum = Regex("[.,$]")
+        var money = "0.00"
+
         // Tip button is disabled on launch
         button.isEnabled = false
 
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
                 Log.i(TAG, "The input has changed!")
 
                 // Enables button
-                button.isEnabled = true;
+                button.isEnabled = true
 
                 // Remove listener to avoid crashing application
                 editText.removeTextChangedListener(this)
@@ -62,8 +64,9 @@ class MainActivity : AppCompatActivity() {
         button.setOnClickListener {
             Log.i(TAG, "The button has been clicked!")
 
+            // 0.15 represents percentage of amount to be calculated for the tip
             val temp = money.replace(nonNum, "").toDouble() * 0.15
-            Toast.makeText(this, moneyFormat.format((temp / 100)), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Tip is " + moneyFormat.format((temp / 100)), Toast.LENGTH_SHORT).show()
         }
     }
 }
